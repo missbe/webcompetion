@@ -37,7 +37,7 @@
 
                     <form class="am-form tpl-form-border-form tpl-form-border-br" enctype="multipart/form-data"
                           <c:if test="${!empty requestScope.blog}">
-                              action="<%=basePath %>admin/blog/saveBlog?flagUpdate=update"
+                              action="<%=basePath %>admin/blog/saveBlog?flagUpdate=update&id=${requestScope.blog.id}"
                           </c:if>
                           <c:if test="${empty requestScope.blog}">
                               action="<%=basePath %>admin/blog/saveBlog"

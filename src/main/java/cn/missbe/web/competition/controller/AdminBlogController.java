@@ -48,10 +48,20 @@ public class AdminBlogController {
     {
         System.out.println("----你确定要删除Blog--ID--"+id);
         String message;
-        if(id<=0){
+        List<Blog> galleryList=blogServiceImpl.findAll(Blog.class);
+        boolean flag=false;
+        for(Blog blog:galleryList){
+            if(blog.getId()==id){
+                flag=true;
+                break;
+            }///判断是否存在
+        }
+        if(!flag){
             message="--博客ID错误，删除失败----";
         }else{
-//            blogServiceImpl.delete(Blog.class,id);
+            String sql="delete from blog_tags where blog_id="+id;
+            blogServiceImpl.deleteBySQL(sql);///预先执行SQL语句，删除外键约束
+            blogServiceImpl.delete(Blog.class,id);
             message="----删除博客成功----";
         }
         model.addAttribute("message",message);
@@ -62,17 +72,6 @@ public class AdminBlogController {
     public String blogEdit(String id,Model model){
 
         System.out.println("----你确定要编辑-Blog--ID--"+id);
-//        if(null==categorList){
-//            categorList=categoryServiceImpl.getCategory(new Category());
-//        }
-//        List<String> categorys=new ArrayList<>();////创建副本，避免更改数据
-//        for(Category category:categorList){
-//            categorys.add(category.getBlogCategoryName());
-//        }
-//        if(categorys.size()>0){
-//            model.addAttribute("catgorys",categorys);////传递分类数据到前台
-//        }
-
         setCategoryTags(model);///发送数据到前台
 
         if(id != null && !id.isEmpty()){
@@ -280,10 +279,10 @@ public class AdminBlogController {
             if(!fileFlag){
                 model.addAttribute("message","--博客保存出错了---");
             }else {
-                model.addAttribute("message", "--博客发表成功---");
                 blog.setBlogImage(dataBaseFileName);
                 ///判断是保存还是更新
                 if(flagUpdate!=null && flagUpdate.trim().equals("update")){
+                    blog.setId(Integer.parseInt(request.getParameter("id")));///进行更新，一定要带博客标识
                     blogServiceImpl.update(blog);
                     model.addAttribute("message", "--博客更新成功---");
                 }else{
@@ -294,6 +293,7 @@ public class AdminBlogController {
             }
         }else{
             if(flagUpdate!=null && flagUpdate.trim().equals("update")){
+                blog.setId(Integer.parseInt(request.getParameter("id")));///进行更新，一定要带博客标识
                 blogServiceImpl.update(blog);
                 model.addAttribute("message", "--博客更新成功---");
             }else{
@@ -302,9 +302,6 @@ public class AdminBlogController {
             }
             System.out.println("----更新模拟-----");
         }
-
-        model.addAttribute("message", "--博客添加成功---");
-
         return "admin/message";
     }
 

@@ -74,4 +74,8 @@ public class BlogDaoImpl extends BaseDaoImpl<Blog> implements BlogDao {
 
         return super.findByPage(hql,pageNo,pageSize,params);
     }
+    public int deleteBySQL(String sql){
+        return super.getSessionFactory().getCurrentSession().createSQLQuery(sql)
+                .executeUpdate();
+    }
 }

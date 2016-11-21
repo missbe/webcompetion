@@ -47,4 +47,8 @@ public class GalleryDaoImpl extends BaseDaoImpl<Gallery> {
 
         return  super.findByPage(hql,pageNo,pageSize,params);
     }
+    public int deleteBySQL(String sql){
+       return super.getSessionFactory().getCurrentSession().createSQLQuery(sql)
+               .executeUpdate();
+    }
 }

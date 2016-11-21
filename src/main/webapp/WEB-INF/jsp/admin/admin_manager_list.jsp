@@ -172,19 +172,10 @@
 
         $("#buttonAdd").click(function () {
             window.location.href="<%=basePath %>admin/manager/add";
-            <%--$.ajax({--%>
-                <%--type : "post",--%>
-                <%--url : "<%=basePath %>admin/manager/add",--%>
-<%--//                data : "test=" + test,--%>
-                <%--async : true,--%>
-                <%--success : function(data){--%>
-                   <%--window.location.href=<%=basePath %>admin/manager/add;--%>
-                <%--}--%>
-            <%--});--%>
         });
         $(".managerEdit").click(function () {
              id=$(this).attr("value");
-//            alert(id);
+            console.log("id:"+id);
             window.location.href="<%=basePath %>admin/manager/edit?id="+id;
         });
         $('.doc-confirm-toggle').on('click', function() {

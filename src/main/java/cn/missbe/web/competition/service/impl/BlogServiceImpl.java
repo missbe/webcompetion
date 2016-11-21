@@ -74,4 +74,7 @@ public class BlogServiceImpl  implements BlogService{
 
         return blogDao.findByPage(hql,pageNo,pageSize,params);
     }
+    public int deleteBySQL(String sql){
+        return blogDao.deleteBySQL(sql);
+    }
 }

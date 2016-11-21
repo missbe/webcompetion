@@ -53,10 +53,22 @@ public class AdminGalleryController {
     {
         System.out.println("----你确定要删除--Gallery--ID--"+id);
         String message;
-        if(id<=0){
+        List<Gallery> galleryList=galleryService.findAll(Gallery.class);
+        boolean flag=false;
+
+        for(Gallery gallery:galleryList){
+            if(gallery.getId()==id){
+                flag=true;
+                break;
+            }///判断是否存在
+        }
+        if(!flag){
             message="---图文ID错误，删除失败----";
         }else{
-//            galleryService.delete(Gallery.class,id);
+            ///预先执行SQL语句，删除外键约束
+            String sql="delete from gallery_tags where gallery_id="+id;
+            galleryService.deleteBySQL(sql);///预先执行SQL语句，删除外键约束
+            galleryService.delete(Gallery.class,id);
             message="----删除-图文-成功----";
         }
         model.addAttribute("message",message);
@@ -67,6 +79,7 @@ public class AdminGalleryController {
     public String galleryEdit(String id,Model model){
 
         System.out.println("----你确定要编辑-图文--ID--"+id);
+        sendCategoryTags(model);///发送分类数据到前台
 
         if(id != null && !id.isEmpty()){
             ///创建manager的副本
@@ -138,6 +151,25 @@ public class AdminGalleryController {
 //        return "admin/blog_list";
 //    }
 
+    private void sendCategoryTags(Model model){
+        List<GalleryTags> tagsList=galleryTagsService.findAll(GalleryTags.class);
+        List<String> tags=new ArrayList<>();
+        for (GalleryTags tag:tagsList){
+            tags.add(tag.getGalleryNames());
+        }
+        if(tags.size()>0){
+            model.addAttribute("tags",tags);///发送标签数据到前台
+        }
+
+        List<GalleryCategory> categorList=galleryCategoryService.findAll(GalleryCategory.class);
+        List<String> categorys=new ArrayList<>();
+        for(GalleryCategory category:categorList){
+            categorys.add(category.getGalleryCategoryName());
+        }
+        if(categorys.size()>0){
+            model.addAttribute("catgorys",categorys);///发送分类信息到前台
+        }
+    }
     @RequestMapping(value = "/list")
     public String galleryCategoryList(int pageNo,String paramCategory, Model model, HttpSession httpSession){
         ////选取所有分类,如果为NULL才进行查询
@@ -210,23 +242,8 @@ public class AdminGalleryController {
 
     @RequestMapping(value = "/report")
     public String galleryReport(Model model, HttpSession httpSession){
-        List<GalleryTags> tagsList=galleryTagsService.findAll(GalleryTags.class);
-        List<String> tags=new ArrayList<>();
-        for (GalleryTags tag:tagsList){
-            tags.add(tag.getGalleryNames());
-        }
-        if(tags.size()>0){
-            model.addAttribute("tags",tags);///发送标签数据到前台
-        }
+        sendCategoryTags(model);///发送分类数据到前台
 
-        List<GalleryCategory> categorList=galleryCategoryService.findAll(GalleryCategory.class);
-        List<String> categorys=new ArrayList<>();
-        for(GalleryCategory category:categorList){
-            categorys.add(category.getGalleryCategoryName());
-        }
-        if(categorys.size()>0){
-            model.addAttribute("catgorys",categorys);///发送分类信息到前台
-        }
         return "admin/image_report";
     }
 

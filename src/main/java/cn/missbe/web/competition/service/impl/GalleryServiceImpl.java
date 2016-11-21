@@ -58,29 +58,16 @@ public class GalleryServiceImpl implements GalleryService {
         return galleryDao.findCount(entiyClazz);
     }
 
-    /**
-     * 使用HQL语句进行分页查询操作
-     * @param hql 需要查询的HQL语句
-     * @param pageNo 查询第几页的记录
-     * @param pageSize 每页的大小
-     * @return 当前页的所有记录
-     */
     public List<Gallery> findByPage(String hql,int pageNo,int pageSize){
         ///创建查询
         return galleryDao.findByPage(hql,pageNo,pageSize);
     }
 
-    /**
-     * 使用HQL语句进行分页查询操作
-     * @param hql 需要查询的HQL语句
-     * @param pageNo 查询第几页的记录
-     * @param pageSize 每页的大小
-     * @param params 如果HQL带占位符，params用于传入点位符的参数
-     * @return 当前页的所有记录
-     */
     public  List<Gallery> findByPage(String hql,int pageNo,int pageSize,Object... params){
-        ///创建查询
-
         return  galleryDao.findByPage(hql,pageNo,pageSize,params);
+    }
+
+    public int deleteBySQL(String sql){
+        return galleryDao.deleteBySQL(sql);
     }
 }

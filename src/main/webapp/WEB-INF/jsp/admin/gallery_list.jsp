@@ -205,15 +205,16 @@
             $('#my-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function(options) {
-                    console.log("ID:"+id);
+//                    console.log("ID:"+id);
                     window.location.href="<%=basePath %>admin/gallery/delete?id="+id;
                 }
             });
             $(".am-dimmer").attr('style','');
             return false;
         });
-        $(".doc-confirm-toggle.tpl-table-black-operation-del").click(function () {
+        $(".tpl-table-black-operation-del").click(function () {
             id=$(this).attr("value");
+//            console.log("ID:"+id);
         });
         $("#buttonAdd").click(function () {
             window.location.href="<%=basePath %>admin/gallery/report";
