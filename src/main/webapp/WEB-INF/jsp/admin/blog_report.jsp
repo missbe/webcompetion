@@ -248,5 +248,7 @@
     }
 
 </script>
-
+<script>
+    document.title = '博客发表';
+</script>
 <jsp:include page="common/footer.jsp" />

@@ -64,5 +64,7 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.title = 'Home|Admin';
+    </script>
 <jsp:include page="common/footer.jsp" />

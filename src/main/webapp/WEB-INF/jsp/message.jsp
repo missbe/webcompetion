@@ -103,5 +103,8 @@
     <jsp:include page="common/copy.jsp" />
 
 </div><!--end wrapper-->
+<script>
+    document.title = '消息|MESSAGE';
+</script>
 </body>
 </html>

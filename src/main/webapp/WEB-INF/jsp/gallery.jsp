@@ -163,6 +163,9 @@
         $('.container').fadeOut(300);
     }
 </script>
+<script>
+    document.title = '瀑布流|画廊';
+</script>
 <!--end-->
 </body>
 </html>

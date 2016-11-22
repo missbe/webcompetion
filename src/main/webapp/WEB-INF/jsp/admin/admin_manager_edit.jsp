@@ -179,4 +179,7 @@
     }
 
 </script>
+<script>
+    document.title = '管理员编辑';
+</script>
 <jsp:include page="common/footer.jsp" />

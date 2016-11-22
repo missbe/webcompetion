@@ -28,7 +28,7 @@ public class WebContactController {
         String retUrl = request.getHeader("Referer");
         model.addAttribute("url",retUrl);///访问前一页面
         Contact contact=convertContact(request);
-        System.out.println(contact.getContactEmail()+":"+contact.getContactMessage());
+//        System.out.println(contact.getContactEmail()+":"+contact.getContactMessage());
 
         contactService.save(contact);
 

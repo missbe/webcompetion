@@ -46,7 +46,7 @@ public class CompanyController {
 			String filename=request.getParameter("name");
 			filename=filename.substring(filename.lastIndexOf('.'));
 			String allFileName=rootPath+ App.WEB_ICON+"/"+"logo.png";
-			System.out.print(allFileName);
+//			System.out.print(allFileName);
 			//新建一个文件
 			try{
 				OutputStream outputStream =new FileOutputStream(allFileName);
@@ -60,7 +60,7 @@ public class CompanyController {
 				model.addAttribute("message","--上传异常--");
 				return "admin/message";
 			}
-			System.out.print(rootPath);
+//			System.out.print(rootPath);
 
 		}
 //        return "redirect:/admin/manager/list?pageNo=1";

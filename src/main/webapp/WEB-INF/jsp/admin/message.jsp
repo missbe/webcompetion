@@ -29,4 +29,7 @@
         </div>
     </div>
 </div>
+<script>
+    document.title = 'MESSAGE|提示';
+</script>
 <jsp:include page="common/footer.jsp"/>

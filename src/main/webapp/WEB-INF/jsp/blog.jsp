@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -181,5 +181,8 @@
     <jsp:include page="common/copy.jsp" />
 
 </div><!--end wrapper-->
+<script>
+    document.title = '博客列表|BLOG';
+</script>
 </body>
 </html>

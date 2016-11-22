@@ -200,5 +200,8 @@
         $("#image").attr("src",path);
     });
 </script>
+<script>
+    document.title = '管理员信息更改';
+</script>
 <jsp:include page="common/footer.jsp" />
 

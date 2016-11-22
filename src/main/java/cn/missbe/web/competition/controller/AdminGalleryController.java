@@ -51,7 +51,7 @@ public class AdminGalleryController {
     @RequestMapping(value = "/delete")
     public String galleryDelete(int id,Model model)
     {
-        System.out.println("----你确定要删除--Gallery--ID--"+id);
+//        System.out.println("----你确定要删除--Gallery--ID--"+id);
         String message;
         List<Gallery> galleryList=galleryService.findAll(Gallery.class);
         boolean flag=false;
@@ -78,7 +78,7 @@ public class AdminGalleryController {
     @RequestMapping(value = "/edit")
     public String galleryEdit(String id,Model model){
 
-        System.out.println("----你确定要编辑-图文--ID--"+id);
+//        System.out.println("----你确定要编辑-图文--ID--"+id);
         sendCategoryTags(model);///发送分类数据到前台
 
         if(id != null && !id.isEmpty()){
@@ -88,7 +88,7 @@ public class AdminGalleryController {
             gallery.setGalleryImgage(App.GALLERY_PREFIX+gallery.getGalleryImgage());
 
             if(null != gallery){
-                System.out.println(gallery.getId()+":"+gallery.getGalleryTitle()+":"+gallery.getGalleryImgage());
+//                System.out.println(gallery.getId()+":"+gallery.getGalleryTitle()+":"+gallery.getGalleryImgage());
                 model.addAttribute("gallery",gallery);
             }
         }else{
@@ -250,14 +250,14 @@ public class AdminGalleryController {
     ////为发表博客界面添加分类和标签
     @RequestMapping(value = "/saveGallery")
     public String saveGallery(@RequestParam("file")CommonsMultipartFile[] multipartFile,String type, MultipartHttpServletRequest request, Model model){
-        System.out.println(request.getParameter("title")+request.getParameter("date"));
-        System.out.println(request.getParameter("tags")+request.getParameter("category"));
-        System.out.println(request.getParameter("content"));
+//        System.out.println(request.getParameter("title")+request.getParameter("date"));
+//        System.out.println(request.getParameter("tags")+request.getParameter("category"));
+//        System.out.println(request.getParameter("content"));
 
         StringBuilder builder=new StringBuilder();///存储字符串连接
         ///未提交文件直接更新信息
         if(null != multipartFile){
-            System.out.println("SIZE:"+multipartFile.length);
+//            System.out.println("SIZE:"+multipartFile.length);
 
             model.addAttribute("message", "--图文发表更新成功---");
 
@@ -265,17 +265,17 @@ public class AdminGalleryController {
             String dir= DateUtil.formateDateyyyyMM(new Date());
             ///保存文件的完整路径
             String allDirName=rootPath+ App.GALLERY_PREFIX+ dir;
-            System.out.println("AllDirName:"+allDirName);
+//            System.out.println("AllDirName:"+allDirName);
 
 
-            System.out.println("Dir:"+dir);
+//            System.out.println("Dir:"+dir);
             ///目录是否存在，不存在创建
             File dirFile=new File(allDirName);
             if(!dirFile.exists()){
                 boolean flag= dirFile.mkdir();
                 if(flag){
                     PrintUtil.print("文件夹:"+dir+"创建成功..", Level.info);
-                    System.out.println("文件夹:"+dir+"创建成功..");
+//                    System.out.println("文件夹:"+dir+"创建成功..");
                 }
             }
 
@@ -284,13 +284,13 @@ public class AdminGalleryController {
                 ///获取上文件信息
                 String name=multipartFile[i].getOriginalFilename();
 //                multipartFile[i].getName();
-                System.out.println("TEST:"+name);
+//                System.out.println("TEST:"+name);
                 String suffix;
                 if(name.contains(".")){
                     suffix=name.substring(name.lastIndexOf("."));
                 }else{
                     suffix=".jpg";
-                    System.out.println("文件名没有分隔后缀，默认JPG");
+//                    System.out.println("文件名没有分隔后缀，默认JPG");
                 }
 
                 ///保存的文件名
@@ -301,16 +301,16 @@ public class AdminGalleryController {
                 String dataBaseFileName=dir+"/"+fileName;
                 builder.append(dataBaseFileName+App.GALLERY_SEPARATOR);///加入这个并且加入分隔符
 
-                System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
-                        +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
+//                System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
+//                        +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
 
                 flag =  FileUploadUtil.upload(allFileName,multipartFile[i]);
                 String message=flag ? "保存成功":"保存失败";
-                System.out.println("Index:"+i+"--"+multipartFile[i].getOriginalFilename()+message);
+//                System.out.println("Index:"+i+"--"+multipartFile[i].getOriginalFilename()+message);
             }
 
         }else{
-            System.out.println("SIZE:--0---");
+//            System.out.println("SIZE:--0---");
             model.addAttribute("message", "--图文发表更新成功---");
         }
 
@@ -357,8 +357,8 @@ public class AdminGalleryController {
             galleryService.save(gallery);
         }
 
-        System.out.println("Gallery:"+gallery.getId()+":"+gallery.getGalleryTitle()+":"+gallery.getCategory());
-        System.out.println("Gallery:"+gallery.getGalleryTime()+":"+gallery.getContent()+":"+gallery.getAdminId());
+//        System.out.println("Gallery:"+gallery.getId()+":"+gallery.getGalleryTitle()+":"+gallery.getCategory());
+//        System.out.println("Gallery:"+gallery.getGalleryTime()+":"+gallery.getContent()+":"+gallery.getAdminId());
 
         return "admin/message";
     }

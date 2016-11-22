@@ -232,4 +232,7 @@
         return false;
     }
 </script>
+<script>
+    document.title = '博客列表';
+</script>
 <jsp:include page="common/footer.jsp" />

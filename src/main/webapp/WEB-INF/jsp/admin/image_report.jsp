@@ -266,7 +266,9 @@
         $(".newFile").remove();
     }
 </script>
-
+<script>
+    document.title = '图文发表';
+</script>
 </body>
 
 </html>

@@ -199,5 +199,7 @@
 
     });
 </script>
-
+<script>
+    document.title = '管理员列表';
+</script>
 <jsp:include page="common/footer.jsp" />

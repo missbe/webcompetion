@@ -105,7 +105,7 @@ public class AdminManagerController {
 
     ///判断是否是超级管理员
     private  boolean isSuperManager(Manager manager){
-        System.out.println(manager.getPermission());
+//        System.out.println(manager.getPermission());
         if(ManagerType.typeToInt(ManagerType.supervisor)==
                 ManagerType.typeToInt(ManagerType.strToTypel(manager.getPermission()))){
             return true;
@@ -118,7 +118,7 @@ public class AdminManagerController {
     public String login(HttpServletRequest request, HttpSession httpsession, Model model){
         String name=request.getParameter("userName");
         String pass=request.getParameter("userPass");
-        System.out.println(name+"-------"+pass);
+//        System.out.println(name+"-------"+pass);
 
         if(null==name || pass==null){
             model.addAttribute("message","用户名和密码必填");
@@ -132,7 +132,7 @@ public class AdminManagerController {
                     Manager newManager=new Manager(manager);///创建副本，不是持久化对象
 
                     flag=isSuperManager(newManager);////登录后即获取是否是超级管理员
-                    System.out.println("是否为超级管理员:"+flag);
+//                    System.out.println("是否为超级管理员:"+flag);
 
                     newManager.setImage(App.ADMIN_PREFIX+manager.getImage());///加上前缀
                     int count=blogService.findBlogCount(newManager.getId());
@@ -161,7 +161,7 @@ public class AdminManagerController {
         refreshSession(httpSession);///获取列表时刷新数据
 
         int pageSize=15;
-        System.out.println(pageNo+":"+pageSize);
+//        System.out.println(pageNo+":"+pageSize);
         List<Manager> managerList=managerService.findByPage("from Manager m",pageNo,pageSize);
 
         ///只查找一次
@@ -189,7 +189,7 @@ public class AdminManagerController {
             return "admin/message";
         }
 
-        System.out.println("----你确定要删除ID--"+id);
+//        System.out.println("----你确定要删除ID--"+id);
         String message;
         if(id<=0){
             message="--管理员ID错误，删除失败----";
@@ -218,26 +218,26 @@ public class AdminManagerController {
             return "admin/message";
         }
 
-        System.out.println("Manager ID:"+id);
+//        System.out.println("Manager ID:"+id);
 
         ///创建manager的副本
         Manager manager=new Manager(managerService.find(" from Manager m where m.id=?0", Integer.parseInt(id)).get(0));
         manager.setImage(App.ADMIN_PREFIX+manager.getImage());
 
         if(null != manager){
-            System.out.println(manager.getId()+":"+manager.getName()+":"+manager.getImage());
+//            System.out.println(manager.getId()+":"+manager.getName()+":"+manager.getImage());
             model.addAttribute("manager",manager);
         }
         return "admin/admin_manager_edit";
     }
     @RequestMapping(value = "/manager/addManager")
     public String addManager(@RequestParam("multipartFile") CommonsMultipartFile multipartFile,HttpServletRequest request, Model model){
-        System.out.println(request.getParameter("userName")+request.getParameter("userPass"));
-        System.out.println(request.getParameter("userPermiss")+request.getParameter("userDescription"));
-        System.out.println(request.getParameter("id")+request.getParameter("userPermiss"));
+//        System.out.println(request.getParameter("userName")+request.getParameter("userPass"));
+//        System.out.println(request.getParameter("userPermiss")+request.getParameter("userDescription"));
+//        System.out.println(request.getParameter("id")+request.getParameter("userPermiss"));
 
         Manager manager=convertManager(request);///封装请求的rquest对象
-        System.out.println("Manager:"+manager.getId()+":"+manager.getDescription());
+//        System.out.println("Manager:"+manager.getId()+":"+manager.getDescription());
 
         String rootPath=request.getServletContext().getRealPath("/");
         String dir= DateUtil.formateDateyyyyMM(new Date());
@@ -245,14 +245,14 @@ public class AdminManagerController {
         String allDirName=rootPath+ App.ADMIN_PREFIX+ dir;
 
         if(null!=multipartFile && !multipartFile.isEmpty()){
-            System.out.println("Dir:"+dir);
+//            System.out.println("Dir:"+dir);
             ///目录是否存在，不存在创建
             File dirFile=new File(allDirName);
             if(!dirFile.exists()){
                 boolean flag= dirFile.mkdir();
                 if(flag){
                     PrintUtil.print("文件夹:"+dir+"创建成功..", Level.info);
-                    System.out.println("文件夹:"+dir+"创建成功..");
+//                    System.out.println("文件夹:"+dir+"创建成功..");
                 }
             }
             ///获取上文件信息
@@ -265,8 +265,8 @@ public class AdminManagerController {
             ///写入数据的字符串
             String dataBaseFileName=dir+"/"+fileName;
 
-            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
-                    +"------"+request.getContextPath()+" DataBase:"+dataBaseFileName);
+//            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
+//                    +"------"+request.getContextPath()+" DataBase:"+dataBaseFileName);
 
             boolean fileFlag=FileUploadUtil.upload(allFileName,multipartFile);
             if(!fileFlag){
@@ -286,29 +286,29 @@ public class AdminManagerController {
     @RequestMapping(value = "/manager/saveManager")
     public String saveManager(@RequestParam("multipartFile") CommonsMultipartFile multipartFile,HttpServletRequest request, Model model){
 
-        System.out.println(request.getParameter("userName")+request.getParameter("userPass"));
-        System.out.println(request.getParameter("userPermiss")+request.getParameter("userDescription"));
-        System.out.println(request.getParameter("id")+request.getParameter("userPermiss"));
+//        System.out.println(request.getParameter("userName")+request.getParameter("userPass"));
+//        System.out.println(request.getParameter("userPermiss")+request.getParameter("userDescription"));
+//        System.out.println(request.getParameter("id")+request.getParameter("userPermiss"));
 
         Manager manager=convertManager(request);
-        System.out.println("Manager:"+manager.getId()+":"+manager.getDescription());
+//        System.out.println("Manager:"+manager.getId()+":"+manager.getDescription());
         ///未提交文件直接更新信息
         if(null != multipartFile && !multipartFile.isEmpty()){
             String rootPath=request.getServletContext().getRealPath("/");
             String dir= DateUtil.formateDateyyyyMM(new Date());
             ///保存文件的完整路径
             String allDirName=rootPath+ App.ADMIN_PREFIX+ dir;
-            System.out.println("AllDirName:"+allDirName);
+//            System.out.println("AllDirName:"+allDirName);
 
 
-            System.out.println("Dir:"+dir);
+//            System.out.println("Dir:"+dir);
             ///目录是否存在，不存在创建
             File dirFile=new File(allDirName);
             if(!dirFile.exists()){
                 boolean flag= dirFile.mkdir();
                 if(flag){
                     PrintUtil.print("文件夹:"+dir+"创建成功..", Level.info);
-                    System.out.println("文件夹:"+dir+"创建成功..");
+//                    System.out.println("文件夹:"+dir+"创建成功..");
                 }
             }
             ///获取上文件信息
@@ -321,8 +321,8 @@ public class AdminManagerController {
             ///写入数据的字符串
             String dataBaseFileName=dir+"/"+fileName;
 
-            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
-                    +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
+//            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
+//                    +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
 
             boolean fileFlag=FileUploadUtil.upload(allFileName,multipartFile);
             if(!fileFlag){
@@ -341,20 +341,20 @@ public class AdminManagerController {
 
     @RequestMapping(value = "/manager/setting")
     public String managerSetting(HttpSession httpsession,Model model){
-        System.out.println("/manager/setting被调用---");
+//        System.out.println("/manager/setting被调用---");
         Manager manager=(Manager)httpsession.getAttribute("manager");
         if(null == manager){
             return "admin/login";
         }
         int id=manager.getId();
-        System.out.println("Manager ID:"+id);
+//        System.out.println("Manager ID:"+id);
 
         Manager newManager=new Manager(managerService.find(" from Manager m where m.id=?0", id).get(0));
 
         newManager.setImage(App.ADMIN_PREFIX+manager.getImage());
 
         if(null != manager){
-            System.out.println(newManager.getId()+":"+newManager.getName()+":"+newManager.getImage());
+//            System.out.println(newManager.getId()+":"+newManager.getName()+":"+newManager.getImage());
              model.addAttribute("manager",newManager);
         }
         return "admin/admin_manager_setting";

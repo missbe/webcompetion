@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/16 0016
@@ -77,7 +77,8 @@
                     <div class="post-content">
 						<span class="masonry-post-meta">
 							<c:if test="${!empty requestScope.blog}" >
-                                ${requestScope.blog.blogTime}
+                                <c:set var="path" value="${'static/upload/blog/'} ${requestScope.blog.blogImage}" />
+                                <img src="<%=basePath%>${path}">
                             </c:if> / <a href="#"><c:if test="${!empty requestScope.blog}" >
                                 ${requestScope.blog.category}
                             </c:if></a>
@@ -148,6 +149,8 @@
     <jsp:include page="common/copy.jsp" />
 
 </div><!--end wrapper-->
-
+<script>
+    document.title = '${requestScope.blog.blogTitle}|博客详细';
+</script>
 </body>
 </html>

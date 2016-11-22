@@ -235,4 +235,7 @@
         return false;
     }
 </script>
+<script>
+    document.title = '图文列表';
+</script>
 <jsp:include page="common/footer.jsp" />

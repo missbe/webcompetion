@@ -140,7 +140,7 @@ $(function(){
 <div class="container-fluid">
 <div class="row">
 <div class="col-xs-3 logo">
-<a href="http://pulla.tv">
+<a href="${basePath}">
 <img class="dMobile" src="${basePath}static/upload/company/mobilelogo.png" height="50" width="210">
 <img class="dDesktop" src="${basePath}static/upload/company/logo.png" height="50" width="210">
 </a>
@@ -158,7 +158,7 @@ $(function(){
 <li data-menuanchor="Company"><a href="#Company">Company</a></li>
 <li><a href="#">SHOWREEL</a></li>
 <li data-menuanchor="Services"><a href="#Services">Service</a></li>
-<li data-menuanchor="Blog"><a href="${basePath}blog/list">Blog</a></li>
+<li data-menuanchor="Blog"><a href="<%=basePath%>">Blog</a></li>
 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
 </ul>
 </nav>
@@ -264,13 +264,13 @@ $(function(){
                                                                                             <div class="dMobile">
                                                     <h2>简历投递</h2>
 <h3>Looking for a job?</h3>
-<p><a href="http://pulla.tv/careers/web-developer/">WEB DEVELOPER</a></p>
+<p><a href="http://www.suse.edu.cn/">WEB DEVELOPER</a></p>
  
                                                 </div>
                                                 <div class="dDesktop">
                                                     <h2>简历投递</h2>
 <h3>Looking for a job?</h3>
-<p><a href="http://pulla.tv/careers/web-developer/">WEB DEVELOPER</a></p>
+<p><a href="http://www.suse.edu.cn/">WEB DEVELOPER</a></p>
                                                 </div>
                                               
                                              
@@ -445,7 +445,7 @@ $(function(){
                                             </div>
                                             <p><strong>反馈</strong><a href="Mailto:${requestScope.webinfo.email}"><span class="__cf_email__" data-cfemail="0c65626a634c7c7960606d22787a">${requestScope.webinfo.email}</span></a></p>
                                             <p><strong>招聘</strong><a href="Mailto:${requestScope.webinfo.email}"><span class="__cf_email__" data-cfemail="15627a677e5565607979743b6163">${requestScope.webinfo.email}</span></a></p>  
-                                            <!-- <p><a href=""><img src="${basePath}static/company/picture/skypeicon.png" height="40" width="40"> pullatvagency</a></p> -->
+                                            
                                         </li>
                                         <li>
                                             <div class="iconHolder">
@@ -458,10 +458,10 @@ $(function(){
                                         </li> 
                                     </ul>
                                     <ul class="social">
-                                        <li><a target="_blank" href="https://www.facebook.com/pulla.tv"><img src="${basePath}static/company/picture/weixingicon.png" height="50" width="50"></a></li>
-                                        <li><a target="_blank" href="https://vimeo.com/pulla"><img src="${basePath}static/company/picture/qqicon.png" height="50" width="50"> </a></li>
-                                        <li><a target="_blank" href="https://www.youtube.com/user/pullapictures"><img src="${basePath}static/company/picture/youtube.png" height="50" width="50"> </a></li>
-                                        <li><a target="_blank" href="https://www.behance.net/PULLA"><img src="${basePath}static/company/picture/tudouicon.png" height="50" width="50"> </a></li>
+                                        <li><a target="_blank" href="http://www.souweixin.com/personal?id=${requestScope.webinfo.title}"><img src="${basePath}static/company/picture/weixingicon.png" height="50" width="50"></a></li>
+                                        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${requestScope.webinfo.qq}&site=qq&menu=yes"><img src="${basePath}static/company/picture/qqicon.png" height="50" width="50"> </a></li>
+                                        <li><a target="_blank" href="https://www.youtube.com/user/${requestScope.webinfo.title}"><img src="${basePath}static/company/picture/youtube.png" height="50" width="50"> </a></li>
+                                        <li><a target="_blank" href="https://www.tudou.com/${requestScope.webinfo.title}"><img src="${basePath}static/company/picture/tudouicon.png" height="50" width="50"> </a></li>
                                         <!-- <li><a target="_blank" href=""><img src="${basePath}static/company/picture/icon.png" height="50" width="50"> </a></li> -->
                                     </ul>
                                     <div class="footInfo">

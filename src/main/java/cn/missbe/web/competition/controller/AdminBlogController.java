@@ -46,7 +46,7 @@ public class AdminBlogController {
     @RequestMapping(value = "/delete")
     public String blogDelete(int id,Model model)
     {
-        System.out.println("----你确定要删除Blog--ID--"+id);
+//        System.out.println("----你确定要删除Blog--ID--"+id);
         String message;
         List<Blog> galleryList=blogServiceImpl.findAll(Blog.class);
         boolean flag=false;
@@ -71,7 +71,7 @@ public class AdminBlogController {
     @RequestMapping(value = "/edit")
     public String blogEdit(String id,Model model){
 
-        System.out.println("----你确定要编辑-Blog--ID--"+id);
+//        System.out.println("----你确定要编辑-Blog--ID--"+id);
         setCategoryTags(model);///发送数据到前台
 
         if(id != null && !id.isEmpty()){
@@ -81,7 +81,7 @@ public class AdminBlogController {
             blog.setBlogImage(App.BLOG_PREFIX+blog.getBlogImage());
 
             if(null != blog){
-                System.out.println(blog.getId()+":"+blog.getBlogTitle()+":"+blog.getBlogImage());
+//                System.out.println(blog.getId()+":"+blog.getBlogTitle()+":"+blog.getBlogImage());
                 model.addAttribute("blog",blog);
             }
         }else{
@@ -219,9 +219,9 @@ public class AdminBlogController {
     @RequestMapping(value = "/saveBlog")
     public String saveBlog(@RequestParam("multipartFile") CommonsMultipartFile multipartFile,String flagUpdate,HttpServletRequest request, Model model){
         MultipartHttpServletRequest multipartRequest   =   (MultipartHttpServletRequest)   request;
-        System.out.println(request.getParameter("content")+request.getParameter("date"));
-        System.out.println(request.getParameter("tags")+request.getParameter("category"));
-        System.out.println(request.getParameter("visible")+request.getParameter("content"));
+//        System.out.println(request.getParameter("content")+request.getParameter("date"));
+//        System.out.println(request.getParameter("tags")+request.getParameter("category"));
+//        System.out.println(request.getParameter("visible")+request.getParameter("content"));
 
         Blog blog=convertBlog(request);///封装博客对象
         Manager manager=null;
@@ -239,8 +239,8 @@ public class AdminBlogController {
         }
 
 
-        System.out.println("Blog:"+blog.getId()+":"+blog.getBlogTitle()+":"+blog.getCategory());
-        System.out.println("Blog:"+blog.getBlogTime()+":"+blog.getBlogTitle()+":"+blog.getBlogHide());
+//        System.out.println("Blog:"+blog.getId()+":"+blog.getBlogTitle()+":"+blog.getCategory());
+//        System.out.println("Blog:"+blog.getBlogTime()+":"+blog.getBlogTitle()+":"+blog.getBlogHide());
 
         ///未提交文件直接更新信息
         if(null != multipartFile && !multipartFile.isEmpty()){
@@ -248,17 +248,17 @@ public class AdminBlogController {
             String dir= DateUtil.formateDateyyyyMM(new Date());
             ///保存文件的完整路径
             String allDirName=rootPath+ App.BLOG_PREFIX+ dir;
-            System.out.println("allDirName:"+allDirName);
+//            System.out.println("allDirName:"+allDirName);
 
 
-            System.out.println("Dir:"+dir);
+//            System.out.println("Dir:"+dir);
             ///目录是否存在，不存在创建
             File dirFile=new File(allDirName);
             if(!dirFile.exists()){
                 boolean flag= dirFile.mkdir();
                 if(flag){
                     PrintUtil.print("文件夹:"+dir+"创建成功..", Level.info);
-                    System.out.println("文件夹:"+dir+"创建成功..");
+//                    System.out.println("文件夹:"+dir+"创建成功..");
                 }
             }
             ///获取上文件信息
@@ -272,8 +272,8 @@ public class AdminBlogController {
             ///写入数据的字符串
             String dataBaseFileName=dir+"/"+fileName;
 
-            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
-                    +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
+//            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
+//                    +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
 
             boolean fileFlag= FileUploadUtil.upload(allFileName,multipartFile);
             if(!fileFlag){
@@ -289,7 +289,7 @@ public class AdminBlogController {
                     blogServiceImpl.save(blog);
                     model.addAttribute("message", "--博客添加成功---");
                 }
-                System.out.println("----保存模拟-----");
+//                System.out.println("----保存模拟-----");
             }
         }else{
             if(flagUpdate!=null && flagUpdate.trim().equals("update")){
@@ -300,7 +300,7 @@ public class AdminBlogController {
                 blogServiceImpl.save(blog);
                 model.addAttribute("message", "--博客添加成功---");
             }
-            System.out.println("----更新模拟-----");
+//            System.out.println("----更新模拟-----");
         }
         return "admin/message";
     }

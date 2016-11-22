@@ -159,6 +159,9 @@
     <jsp:include page="common/copy.jsp"/>
 </div>
 <!--end wrapper-->
+<script>
+    document.title = '联系我们|CONTACT';
+</script>
 </body>
 
 </html>

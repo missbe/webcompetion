@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/7 0007
@@ -27,7 +27,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <base href="${basePath}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="${basePath}favicon.ico">
+    <link rel="shortcut icon" href="${basePath}static/favicon.ico">
 
     <link rel="apple-touch-icon-precomposed" href="${basePath}static/admin/assets/i/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />

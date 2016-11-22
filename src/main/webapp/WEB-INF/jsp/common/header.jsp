@@ -9,12 +9,11 @@
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <base href="static/" />
-
+  
     <!-- mobile meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="${basePath}favicon.ico">
+    <link rel="shortcut icon" href="<%=basePath%>static/favicon.ico">
 
     <!-- main style -->
     <link rel="stylesheet" type="text/css" href="<%=basePath%>static/front/style.css" media="screen" />

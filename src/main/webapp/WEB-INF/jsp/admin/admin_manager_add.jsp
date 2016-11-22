@@ -169,5 +169,8 @@
     }
 
 </script>
+<script>
+    document.title = '管理员添加';
+</script>
 
 <jsp:include page="common/footer.jsp" />
