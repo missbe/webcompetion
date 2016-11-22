@@ -99,7 +99,7 @@
                                 <i class="icon-pencil"></i>
                                 <div class="clear"></div>
                                 <!--正文-->
-                                <img src="<%=basePath%>static/front/headImage/lei.bmp"  class="pull-left" style="margin-right:20px" width="150px" height="130px">
+                                <img src="<%=basePath%>${blog.blogImage}"  class="pull-left" style="margin-right:20px" width="150px" height="130px">
                                 <p >${blog.simpleContent}
                                 </p>
                             </div>

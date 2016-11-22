@@ -85,7 +85,7 @@
                         <i class="icon-pencil"></i>
                         <div class="clear"></div>
                         <h1><a href="#"><c:if test="${!empty requestScope.blog}" >
-                                    ${requestScope.blog.blogTitle}
+                                    <img src="<%=basePath%>${requestScope.blog.blogImage}">
                                </c:if></a></h1>
 
                         <p>

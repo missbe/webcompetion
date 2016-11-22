@@ -41,5 +41,8 @@ public final class App {
      */
     public static final String WEB_ICONX = "static/upload/company/";
 
-
+    /**
+     * 网站icon图标
+     */
+    public static final String WEB_ICON = "static/upload/company/";
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,8 +15,8 @@
  
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta name="description" content="A full service video production & visual effects studio with facilities in Kosovo, South Eastern Europe.">
-<meta name="keywords" content="PULLA"/>
+<meta name="description" content="${requestScope.webinfo.description}">
+<meta name="keywords" content="${requestScope.webinfo.keywords}"/>
  
  
 <link rel="shortcut icon" type="image/x-icon" href="${basePath}static/upload/company/favicon.ico"/>
@@ -140,7 +141,7 @@ $(function(){
 <div class="row">
 <div class="col-xs-3 logo">
 <a href="http://pulla.tv">
-<img class="dMobile" src="${basePath}static/company/picture/mobilelogo.png" height="50" width="210">
+<img class="dMobile" src="${basePath}static/upload/company/mobilelogo.png" height="50" width="210">
 <img class="dDesktop" src="${basePath}static/upload/company/logo.png" height="50" width="210">
 </a>
 </div>
@@ -157,7 +158,7 @@ $(function(){
 <li data-menuanchor="Company"><a href="#Company">Company</a></li>
 <li><a href="#">SHOWREEL</a></li>
 <li data-menuanchor="Services"><a href="#Services">Service</a></li>
-<li data-menuanchor="Blog"><a href="<%=basePath%>blog/list">Blog</a></li>
+<li data-menuanchor="Blog"><a href="${basePath}blog/list">Blog</a></li>
 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
 </ul>
 </nav>
@@ -191,419 +192,64 @@ $(function(){
 <div class="intro height100">
 <div class="container-fluid height100">
 <div class="row text-center sliderCount caruselItem height100">
+<c:if test="${!empty requestScope.imagelist}" >
+<c:forEach items="${requestScope.imagelist}" var="imagelist" 
+    varStatus="num" begin="0" end="${requestScope.size}"  step="2" >
+<c:if test="${num.index+2<=requestScope.size}">
 <div class="height100 col-xs-6 itemWrappers">
 <div class="row height100">
 <div  class="col-xs-12 workItems oh 1 aside " 
-                              style='background-image:url( ${basePath}static/company/images/proline_all-86544-1280x720.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2016/10/Proline_All-86544-1280x720.jpg' > 
+                              style='background-image:url( ${requestScope.imagelist[num.index].image.get(0)} );' > 
                                      
 
-                                    <a href="http://pulla.tv/works/proline/"> 
+                                    <a href="${basePath}/webgallery?id=${num.index}"> 
                                         <div class="workThumbnails">
                                             <div class="element">
                                                 <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>PROLINE</h2>
-                                                    <p>TV AD/3D</p>
+                                                    <span class="icon" syle="background-image:url();"></span>
+                                                    <h2>${requestScope.imagelist[num.index].title}</h2>
+                                                    <p>${requestScope.imagelist[num.index].title}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
                                 </div>  
-                                                         
+                                                         <c:if test="${!empty requestScope.imagelist[num.index+1].image.get(0)}" >
                                                                                           <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( ${basePath}static/company/images/gravity_1080p-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/gravity_1080p-840x600.jpg' > 
+                              style='background-image:url( ${requestScope.imagelist[num.index+1].image.get(0)} );'data-lazy='${requestScope.imagelist[num.index+1].image.get(0)}' > 
                                      
 
-                                    <a href="http://pulla.tv/works/hbo/"> 
+                                    <a href="${basePath}/webgallery?id=${num.index+1}"> 
                                         <div class="workThumbnails">
                                             <div class="element">
                                                 <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>HBO</h2>
-                                                    <p>TV PROMO</p>
+                                                    <span class="icon" syle="background-image:url();"></span>
+                                                    <h2>${requestScope.imagelist[num.index+1].title}</h2>
+                                                    <p>${requestScope.imagelist[num.index+1].title}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
                                 </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                             
-                                                                                          <div  class="col-xs-12 workItems oh 1 aside " 
-                              style='background-image:url( ${basePath}static/company/images/shot_03-0-00-00-13_1-1280x720.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2016/01/Shot_03-0-00-00-13_1-1280x720.jpg' > 
-                                     
+                               </c:if>
+                            </div></div>
+                            </c:if>
+                            
+                            
+                       </c:forEach>     
+</c:if>
 
-                                    <a href="http://pulla.tv/works/eks-juice/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>EKS &#8211; JUICE</h2>
-                                                    <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
                                                          
-                                                                                          <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( ${basePath}static/company/images/jetoni_main_still3-1280x720.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2016/05/Jetoni_main_still3-1280x720.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/eco-living/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>Eco Living</h2>
-                                                    <p>3D/2D ANIMATION</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
+                                                                                          
+                            </div>
+                            
+                                      
                                 </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                             
-                                                                                          <div  class="col-xs-12 workItems oh 1 aside " 
-                              style='background-image:url( ${basePath}static/company/images/bis_rebrand_stills_0020_o-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/BIS_Rebrand_Stills_0020_o-840x600.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/globosat/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>Globosat</h2>
-                                                    <p>CHANNEL REBRAND</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
+                                                                                                                         
                                                          
-                                                                                          <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( ${basePath}static/company/images/midas-snow-dump-00101-840x563.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/Midas-Snow-Dump-00101-840x563.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/midas/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>MIDAS</h2>
-                                                    <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                                                                                             <div class="col-xs-6 workItems oh 1 " style='background-image:url( images/pit_power_30sec_high_quality-00458-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/Pit_Power_30sec_HIGH_QUALITY-00458-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/pit-power/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Pit Power</h2>
-                                                                                                        <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 2 " style='background-image:url( ${basePath}static/company/images/tbp_4min-02727-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/TBP_4min-02727-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/tbp/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>TBP</h2>
-                                                                                                        <p>ARCHITECTURE VISUALISATION</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 3 " style='background-image:url( ${basePath}static/company/images/selection_1080p_vimeo-00440-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/Selection_1080p_vimeo-00440-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/selection/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Selection</h2>
-                                                                                                        <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 4 " style='background-image:url( ${basePath}static/company/images/kuzhina_zeze01-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/kuzhina_zeze01-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/binni/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Binni</h2>
-                                                                                                        <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                                                                                             <div class="col-xs-6 workItems oh 1 " style='background-image:url( images/de_med_tvad_tr_30sec-01294-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/DE_MED_TVAD_TR_30sec-01294-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/work2/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>DE Med</h2>
-                                                                                                        <p>TV AD</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                         
-                                                                                          <div  class="col-xs-12 workItems oh 2 aside " 
-                              style='background-image:url( images/walker-00150-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/Walker-00150-840x600.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/walker/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>WALKER</h2>
-                                                    <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 4 " style='background-image:url( images/car_crash_makingof-2-00446-800x800.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/car_crash_makingof-2-00446-800x800.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/car_crash/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Car Crash</h2>
-                                                                                                        <p>VFX SHOT</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                             
-                                                                                          <div  class="col-xs-12 workItems oh 1 aside " 
-                              style='background-image:url( images/ada_trailer-high_avc-00690-1280x720.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/ADA_trailer-high_avc-00690-1280x720.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/ada/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>ADA</h2>
-                                                    <p>FEATURE FILM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                         
-                                                                                          <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( images/shreddies-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/shreddies-840x600.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/shreddies/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>SHREDDIES</h2>
-                                                    <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                             
-                                                                                          <div  class="col-xs-12 workItems oh 1 aside " 
-                              style='background-image:url( images/future_shop-00289-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/Future_shop-00289-840x600.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/future-shop/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>Future Shop</h2>
-                                                    <p>TV AD</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                         
-                                                                                          <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( images/a6_new_2k-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/a6_new_2k-840x600.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/audi-cars/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>CAR SCENES</h2>
-                                                    <p>3D STILLS</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                             
-                                                                                          <div  class="col-xs-12 workItems oh 1 aside " 
-                              style='background-image:url( images/blackberry-07207-1280x603.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/08/blackberry-07207-1280x603.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/blackberry-2/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>Blackberry</h2>
-                                                    <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 3 " style='background-image:url( images/train_scene-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/train_scene-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/train-scene/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Train Scene</h2>
-                                                                                                        <p>3D ENVIRONMENTS</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 4 " style='background-image:url( images/blackpearl_2k-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/blackpearl_2k-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/pirate-ship/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Pirate Ship</h2>
-                                                                                                        <p>3D ENVIRNONMENTS</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                                                                                             <div class="col-xs-6 workItems oh 1 " style='background-image:url( images/viz_prew_07-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/viz_prew_07-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/sorrengdtranda/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Sorreng Stranda</h2>
-                                                                                                        <p>ARCHITECTURE VISUALIZATION</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 2 " style='background-image:url( images/vanaqua_fa_hd_23976.mp4.still001-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/vanaqua_fa_hd_23976.mp4.Still001-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/van-aqua/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>VANAQUA</h2>
-                                                                                                        <p>TV AD / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                         
-                                                                                          <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( images/lensstore_tvc_1_final-002671-1280x720.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/LensStore_TVC_1_final-002671-1280x720.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/lenstore/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>LENSSTORE</h2>
-                                                    <p>TV AD</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div></div><div class="height100 col-xs-6 itemWrappers"><div class="row height100">                                                                                             <div class="col-xs-6 workItems oh 1 " style='background-image:url( images/checchi-00839-800x830.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/checchi-00839-800x830.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/usaid/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>USAID</h2>
-                                                                                                        <p>PSA / 3D</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                                                                                         <div class="col-xs-6 workItems oh 2 " style='background-image:url( images/003-sinnersad-420x450.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/003-sinnersad-420x450.jpg'>
-                                      
-                                    <a href="http://pulla.tv/works/sinners/">
-                                                                                <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                    <span class="icon"></span>
-                                                                                                        <h2>Sinners</h2>
-                                                                                                        <p>3D ENVIRONMENTS</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                                         
-                                                                                          <div  class="col-xs-12 workItems oh 3 aside " 
-                              style='background-image:url( images/iphone2-00000-840x600.jpg );'data-lazy='http://pulla.tv/wp-content/uploads/2015/07/iphone2-00000-840x600.jpg' > 
-                                     
-
-                                    <a href="http://pulla.tv/works/iphone-scene/"> 
-                                        <div class="workThumbnails">
-                                            <div class="element">
-                                                <div class="element-middle">
-                                                                                                        <span class="icon" syle="background-image:url();"></span>
-                                                    <h2>IPHONE SCENE</h2>
-                                                    <p>3D STILL</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
+                                                                                          
                                                     </div>
                         </div>
-                    </div>
-                </div>
-            </div> 
-             </div> 
     <div class="section company compSlide" id="section2">  
         <div class="slideComp" style="background-image:url(${basePath}static/company/images/careers_image2.jpg);">
             <div class="element mmelement">

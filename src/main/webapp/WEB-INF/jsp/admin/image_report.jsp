@@ -72,9 +72,6 @@
                                 <label for="user-intro" class="am-u-sm-3 am-form-label">图文介绍</label>
                                 <div class="am-u-sm-9">
                                     <textarea class="" rows="10" id="user-intro" name="content" placeholder="请输入图文介绍">
-                                        <c:if test="${!empty requestScope.gallery.content}">
-                                            ${requestScope.gallery.content}
-                                        </c:if>
                                     </textarea>
                                 </div>
                             </div>

@@ -283,6 +283,8 @@ public class AdminGalleryController {
             for(int i=0;i<multipartFile.length;i++){
                 ///获取上文件信息
                 String name=multipartFile[i].getOriginalFilename();
+//                multipartFile[i].getName();
+                System.out.println("TEST:"+name);
                 String suffix;
                 if(name.contains(".")){
                     suffix=name.substring(name.lastIndexOf("."));
@@ -292,7 +294,7 @@ public class AdminGalleryController {
                 }
 
                 ///保存的文件名
-                String fileName= DateUtil.formateDateyyyyMMddHHmmss(new Date()).toString()+suffix;
+                String fileName= DateUtil.formateDateyyyyMMddHHmmss(new Date()).toString()+i+suffix;
                 ///保存文件的完整路径
                 String allFileName=rootPath+ App.GALLERY_PREFIX+ dir +"/"+fileName;
                 ///写入数据的字符串

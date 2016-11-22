@@ -11,6 +11,15 @@ public class GalleryImage {
     private  String title;
     private String date;
     private List<String> image=new ArrayList<String>();
+    private String content;
+    public void setContent(String content)
+    {
+        this.content=content;
+    }
+    public String getContent()
+    {
+        return content;
+    }
 
     public int getId() {
         return id;
