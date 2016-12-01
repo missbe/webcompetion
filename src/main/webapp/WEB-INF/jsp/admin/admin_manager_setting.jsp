@@ -203,5 +203,8 @@
 <script>
     document.title = '管理员信息更改';
 </script>
+<script>    
+    $("#header_zhanghu").attr("class","active")    
+</script>
 <jsp:include page="common/footer.jsp" />
 

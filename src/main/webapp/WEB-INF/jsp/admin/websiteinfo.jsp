@@ -228,26 +228,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
-                    <i class="am-icon-code sidebar-nav-link-logo"></i> 项目管理
-                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
-                    <li class="sidebar-nav-link">
-                        <a href="table-list.html">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 项目内容管理
-                        </a>
-                    </li>
-
-                    <li class="sidebar-nav-link">
-                        <a href="table-list-img.html">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 项目权限管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            </li>           
             <li class="sidebar-nav-link">
                 <a href="javascript:;" class="sidebar-nav-sub-title">
                     <i><img src="${basePath}static/admin/assets/img/company.png" style="width:1.5em;height:1.5em;"></i>&nbsp;&nbsp;&nbsp;公司页面管理
@@ -256,15 +237,9 @@
                 <ul class="sidebar-nav sidebar-nav-sub">
                     <li class="sidebar-nav-link">
                         <a href="<%=basePath %>admin/company/websiteinfo">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 网站基本信息管理
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span>网站基本信息管理
                         </a>
-                    </li>
-
-                    <li class="sidebar-nav-link">
-                        <a href="table-list-img.html">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 项目权限管理
-                        </a>
-                    </li>
+                    </li>                   
                 </ul>
             </li>
         </ul>
@@ -463,4 +438,7 @@
 </div>
 </div>
 <span id="tpl-echarts" />
+<script>    
+    $("#hader_home").attr("class","sidebar-nav-sub-title active")
+</script>
 <jsp:include page="common/footer.jsp" />

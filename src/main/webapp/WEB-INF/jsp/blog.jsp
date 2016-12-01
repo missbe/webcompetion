@@ -143,7 +143,7 @@
                 <c:if test="${!empty requestScope.newList}">
                     <c:forEach items="${requestScope.newList}" var="newBlog">
                      <div class="sidebar-post">
-                        <h5><a href="blog-single.html">${newBlog.blogTitle}</a></h5>
+                        <h5><a href="${basePath}blog/detail?id=${newBlog.id}">${newBlog.blogTitle}</a></h5>
                         <span>${newBlog.blogTime}/ <a href="${basePath}blog/detail?id=${newBlog.id}">阅读</a></span>
                      </div><!--end sidebar-post-->
                     </c:forEach>
@@ -153,6 +153,7 @@
             <div class="widget categories ">
                 <h3>分类</h3>
                 <ul>
+                    <li><a href="<%=basePath%>blog/list">ALL</a></li>
                     <c:if test="${!empty requestScope.categorys}" >
                         <c:forEach var="category" items="${requestScope.categorys}">
                             <li><a href="<%=basePath%>blog/list?type=0&paramCategory=${category}">${category}</a></li>

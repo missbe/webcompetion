@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/14 0014
@@ -237,5 +237,8 @@
 </script>
 <script>
     document.title = '图文列表';
+</script>
+<script>   
+    $("#header_gallery").attr("class","sidebar-nav-sub-title active")    
 </script>
 <jsp:include page="common/footer.jsp" />

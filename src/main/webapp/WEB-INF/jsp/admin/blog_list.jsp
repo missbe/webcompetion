@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/7 0007
@@ -234,5 +234,8 @@
 </script>
 <script>
     document.title = '博客列表';
+</script>
+<script>
+    $("#header_blog").attr("class","sidebar-nav-sub-title active")   
 </script>
 <jsp:include page="common/footer.jsp" />

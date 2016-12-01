@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/7 0007
@@ -200,8 +200,6 @@
         alert("Love TT");
     }
 
-    <%--$('#ssi-upload').ssi_uploader({url:'<%=basePath%>admin/gallery/saveGallery',maxFileSize:6,allowed:['jpg','gif','txt','png','pdf']});--%>
-
 </script>
 <script type="text/javascript">
 
@@ -268,6 +266,10 @@
 </script>
 <script>
     document.title = '图文发表';
+</script>
+
+<script>    
+    $("#header_gallery").attr("class","sidebar-nav-sub-title active")    
 </script>
 </body>
 

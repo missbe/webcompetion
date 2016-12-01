@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
@@ -158,7 +158,7 @@ $(function(){
 <li data-menuanchor="Company"><a href="#Company">Company</a></li>
 <li><a href="#">SHOWREEL</a></li>
 <li data-menuanchor="Services"><a href="#Services">Service</a></li>
-<li data-menuanchor="Blog"><a href="<%=basePath%>">Blog</a></li>
+<li data-menuanchor="Blog"><a href="<%=basePath%>/blog/list">Blog</a></li>
 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
 </ul>
 </nav>
@@ -172,6 +172,7 @@ $(function(){
 <div id="fullpage">
 <div class="section oh" id="section0">
   <video autoplay loop muted id="myVideo">
+ <!-- ${basePath}static/company/578204362.mp4-->
 <source src="https://player.vimeo.com/external/177713132.hd.mp4?s=c44983217b6d4c37e28c2de81a94c79a185ea380&profile_id=119" type="video/mp4">
 </video>
 <div class="element">

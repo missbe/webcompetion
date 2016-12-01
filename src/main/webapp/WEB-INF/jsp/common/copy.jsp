@@ -7,6 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <footer id="footer">
     <div class="centered-wrapper">
         <div id="topfooter">
@@ -37,6 +41,8 @@
         <div class="centered-wrapper">
             <div class="one-half">
                 <p>COPYRIGHT &copy; 2016 - missbe | ALL RIGHTS RESERVED</p>
+				&nbsp;&nbsp;<a target="_blank" href="<%=basePath%>sitemap.xml">网站地图</a></p>
+
             </div><!--end one-half-->
 
             <div class="one-half column-last">

@@ -202,4 +202,7 @@
 <script>
     document.title = '管理员列表';
 </script>
+<script>    
+    $("#header_zhanghu").attr("class","active")    
+</script>
 <jsp:include page="common/footer.jsp" />

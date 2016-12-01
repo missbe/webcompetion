@@ -67,4 +67,7 @@
     <script>
         document.title = 'Home|Admin';
     </script>
+	<script>    
+    $("#header_index").attr("class","active")
+</script>
 <jsp:include page="common/footer.jsp" />

@@ -182,4 +182,7 @@
 <script>
     document.title = '管理员编辑';
 </script>
+<script>    
+    $("#header_zhanghu").attr("class","active")    
+</script>
 <jsp:include page="common/footer.jsp" />

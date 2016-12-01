@@ -186,17 +186,17 @@
         <ul class="sidebar-nav">
 
             <li class="sidebar-nav-link">
-                <a href="${basePath}admin" class="active">
+                <a href="${basePath}admin" id="header_index">
                     <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                 </a>
             </li>
             <li class="sidebar-nav-link">
-                <a href="<%=basePath %>admin/manager/list?pageNo=1">
+                <a href="<%=basePath %>admin/manager/list?pageNo=1" id="header_zhanghu">
                     <i class="am-icon-user sidebar-nav-link-logo"></i> 帐户管理
                 </a>
             </li>
             <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
+                <a href="javascript:;" class="sidebar-nav-sub-title" id="header_blog">
                     <i class="am-icon-file-text sidebar-nav-link-logo"></i> 博客管理
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
@@ -215,7 +215,7 @@
                 </ul>
             </li>
             <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
+                <a href="javascript:;" class="sidebar-nav-sub-title" id="header_gallery">
                     <i class="am-icon-image sidebar-nav-link-logo"></i> 画廊管理
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
@@ -254,7 +254,7 @@
             <%--</li>--%>
 
             <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
+                <a href="javascript:;" class="sidebar-nav-sub-title" id="hader_home">
                     <i><img src="${basePath}static/company/images/company.png" style="width:1.5em;height:1.5em;"></i>&nbsp;&nbsp;&nbsp;&nbsp;首页管理
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>

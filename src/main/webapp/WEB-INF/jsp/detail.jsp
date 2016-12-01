@@ -76,19 +76,17 @@
                 <article class="post regular-article">
                     <div class="post-content">
 						<span class="masonry-post-meta">
-							<c:if test="${!empty requestScope.blog}" >
-                                <c:set var="path" value="${'static/upload/blog/'} ${requestScope.blog.blogImage}" />
-                                <img src="<%=basePath%>${path}">
-                            </c:if> / <a href="#"><c:if test="${!empty requestScope.blog}" >
+							blog / <a href="#"><c:if test="${!empty requestScope.blog}" >
                                 ${requestScope.blog.category}
                             </c:if></a>
 						</span>
                         <i class="icon-pencil"></i>
                         <div class="clear"></div>
-                        <h1><a href="#"><c:if test="${!empty requestScope.blog}" >
-                                    <img src="<%=basePath%>${requestScope.blog.blogImage}">
-                               </c:if></a></h1>
-
+                        <h1>
+                            <c:if test="${!empty requestScope.blog}" >
+                                <c:set var="path" value="${'static/upload/blog/'} ${requestScope.blog.blogImage}" />
+                            <img src="<%=basePath%>${path}">
+                            </c:if>
                         <p>
                             <c:if test="${!empty requestScope.blog}" >
                                 ${requestScope.blog.blogContent}
