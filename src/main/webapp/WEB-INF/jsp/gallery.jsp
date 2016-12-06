@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/16 0016
@@ -129,34 +129,7 @@
 <!--瀑布流JS-->
 <script type="text/javascript">
     $(document).ready(function(){
-
-        var count = 14;
-        // 点击加载更多
-        $('.load_more').click(function(){
-            var html = "";
-            var img = '';
-            for(var i = count; i < count+13; i++){
-                var n = Math.round(Math.random(1)*13);
-                var src = '<%=basePath%>static/front/stream/images/'+n+'.jpg';
-                html = html + "<div class='grid'>"+
-                        "<div class='imgholder'>"+
-                        "<img class='lazy thumb_photo' title='"+i+"' src='<%=basePath%>static/front/stream/images/pixel.gif' data-original='"+src+"' width='225' onclick='seeBig(this)'/>"+
-                        "</div>"+
-                        "</div>";
-                img = img + "<img class='img' src='"+src+"'>";
-            }
-            count = count + 13;
-            $('#container').append(html);
-            $('.content').append(img);
-            $('#container').BlocksIt({
-                numOfCol:4,  //每行显示数
-                offsetX: 5,  //图片的间隔
-                offsetY: 5   //图片的间隔
-            });
-            $("img.lazy").lazyload();
-        });
-
-    });
+      
     //关闭查看大图
     function closeImage() {
         alert('close');

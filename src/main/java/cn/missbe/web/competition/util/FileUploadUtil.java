@@ -25,43 +25,24 @@ public class FileUploadUtil {
             return false;
         }
     }
-//    public static boolean upload(String preffix, HttpServletRequest request,MultipartFile multipartFile){
-//        ///未提交文件直接更新信息
-//        if(null != multipartFile && !multipartFile.isEmpty()){
-//            String rootPath=request.getServletContext().getRealPath("/");
-//            String dir= DateUtil.formateDateyyyyMM(new Date());
-//            ///保存文件的完整路径
-//            String allDirName=rootPath+ preffix+ dir;
-//            System.out.println("AllDirName:"+allDirName);
-//
-//
-//            System.out.println("Dir:"+dir);
-//            ///目录是否存在，不存在创建
-//            File dirFile=new File(allDirName);
-//            if(!dirFile.exists()){
-//                boolean flag= dirFile.mkdir();
-//                if(flag){
-//                    PrintUtil.print("文件夹:"+dir+"创建成功..", Level.info);
-//                    System.out.println("文件夹:"+dir+"创建成功..");
-//                }
-//            }
-//            ///获取上文件信息
-//            String originalFilename=multipartFile.getOriginalFilename();
-//            String suffix=originalFilename.substring(originalFilename.lastIndexOf("."));
-//            ///保存的文件名
-//            String fileName= DateUtil.formateDateyyyyMMddHHmmss(new Date()).toString()+suffix;
-//            ///保存文件的完整路径
-//            String allFileName=rootPath+ preffix+ dir +"/"+fileName;
-//            ///写入数据的字符串
-//            String dataBaseFileName=dir+"/"+fileName;
-//
-//            System.out.println("ContextPath:"+request.getServletContext().getRealPath("/")
-//                    +"--"+request.getContextPath()+" DataBase:"+dataBaseFileName);
-//
-//            return  FileUploadUtil.upload(allFileName,(CommonsMultipartFile)multipartFile);
-//
-//        }else{
-//           return false;
-//        }
-//    }
+    ///删除指定目录下的文件
+    public static boolean delete(String path){
+        boolean flag=false;
+        File file=new File(path);
+        if(file.exists()){///如果文件存在
+           flag=file.delete();///删除文件，并且返回标识
+            deleteDirectory(file);
+        }
+        return flag;
+    }
+    ///删除目录
+    private static void deleteDirectory(File file){
+        File fileDirectory=file.getParentFile();///得到父级目录
+        if(fileDirectory.exists() && fileDirectory.isDirectory()){
+           String[] files=fileDirectory.list();
+            if(files.length==0){
+                fileDirectory.delete();///删除目录
+            }
+        }
+    }
 }

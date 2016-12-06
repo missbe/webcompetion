@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/11/8 0008
@@ -21,12 +21,17 @@
             </div><!--end percent-one-half-->
             <div class="one-half column-last">
                 <div class="percent-one-half">
-                    <h3>We are on GitHub</h3>
-                    <div class="tweet"></div>
+                    <ul style="margin-right:80%;">
+                      <li><a style="font-size: 14px;" href="<%=basePath%>">&nbsp;Home</a></li>
+                      <li><a style="font-size: 14px;" href="<%=basePath%>blog/list">&nbsp;博&nbsp;客</a></li>
+                      <li><a style="font-size: 14px;" href="<%=basePath%>gallery/list">&nbsp;画&nbsp;廊</a></li>
+                      <li><a style="font-size: 14px;" href="<%=basePath%>contact">&nbsp;留&nbsp;言</a></li>
+                      <li><a style="font-size: 12px;" href="#"></a></li>
+                    </ul>
                 </div>
 
                 <div class="percent-one-half column-last">
-                    <h3>Get in Touch with Us</h3>
+                    <h3>--联系我们--</h3>
                     <ul>
                         <li>Address: 四川省自贡市自流井区学苑街108号</li>
                         <li>Phone: 0813-5505909<br/>
@@ -40,18 +45,18 @@
     <div id="bottomfooter">
         <div class="centered-wrapper">
             <div class="one-half">
-                <p>COPYRIGHT &copy; 2016 - missbe | ALL RIGHTS RESERVED</p>
-				&nbsp;&nbsp;<a target="_blank" href="<%=basePath%>sitemap.xml">网站地图</a></p>
+                <p>COPYRIGHT &copy; 2016 - 盐都科技【Missbe】 | ALL RIGHTS RESERVED
+				&nbsp;&nbsp;<a target="_blank" href="<%=basePath%>static/sitemap.xml">网站地图</a></p>
 
             </div><!--end one-half-->
 
             <div class="one-half column-last">
                 <ul id="social">
-                    <li><a class="rss" href="#">RSS Feed</a></li>
-                    <li><a class="facebook" href="#">Facebook</a></li>
-                    <li><a class="twitter" href="#">Twitter</a></li>
-                    <li><a class="flickr" href="#">Flickr</a></li>
-                    <li><a class="google" href="#">Google</a></li>
+                    <li><a class="rss" href="#" title="Rss Feed">RSS Feed</a></li>
+                    <li><a class="facebook" href="#" title="Facebook">Facebook</a></li>
+                    <li><a class="twitter" href="#" title="Twitter">Twitter</a></li>
+                    <li><a class="flickr" href="#" title="Flickr">Flickr</a></li>
+                    <li><a class="google"  href="#" title="Google">Google</a></li>
 
                     <!-- You can add social icons for forrst, dribbble, vimeo, linkedin and skype. Take the ones you need from the list and paste them above
 

@@ -44,15 +44,17 @@ public class AdminBlogController {
     private long pageCount=-1;
 
     @RequestMapping(value = "/delete")
-    public String blogDelete(int id,Model model)
+    public String blogDelete(int id,HttpServletRequest request,Model model)
     {
 //        System.out.println("----你确定要删除Blog--ID--"+id);
         String message;
         List<Blog> galleryList=blogServiceImpl.findAll(Blog.class);
         boolean flag=false;
+        Blog temp=null;///删除博客图片的临时对象
         for(Blog blog:galleryList){
             if(blog.getId()==id){
                 flag=true;
+                temp=new Blog(blog);///创建博客副本
                 break;
             }///判断是否存在
         }
@@ -62,6 +64,9 @@ public class AdminBlogController {
             String sql="delete from blog_tags where blog_id="+id;
             blogServiceImpl.deleteBySQL(sql);///预先执行SQL语句，删除外键约束
             blogServiceImpl.delete(Blog.class,id);
+            ////删除干博客对应的图片
+            String rootPath=request.getServletContext().getRealPath("/");//获取项目根目录
+            FileUploadUtil.delete(rootPath+App.BLOG_PREFIX+temp.getBlogImage());///进行删除
             message="----删除博客成功----";
         }
         model.addAttribute("message",message);
@@ -223,7 +228,14 @@ public class AdminBlogController {
 //        System.out.println(request.getParameter("tags")+request.getParameter("category"));
 //        System.out.println(request.getParameter("visible")+request.getParameter("content"));
 
+
+
         Blog blog=convertBlog(request);///封装博客对象
+        ////清除上一次的图片文件
+        if(flagUpdate!=null && flagUpdate.trim().equals("update")){
+
+            blog.setId(Integer.parseInt(request.getParameter("id")));///进行更新，一定要带博客标识
+        }
         Manager manager=null;
         if(request.getSession().getAttribute("manager") instanceof  Manager){
             manager=(Manager)request.getSession().getAttribute("manager");
@@ -237,10 +249,6 @@ public class AdminBlogController {
                     ManagerType.typeToStr(ManagerType.supervisor)).get(0);
             blog.setAdminId(manager.getId());
         }
-
-
-//        System.out.println("Blog:"+blog.getId()+":"+blog.getBlogTitle()+":"+blog.getCategory());
-//        System.out.println("Blog:"+blog.getBlogTime()+":"+blog.getBlogTitle()+":"+blog.getBlogHide());
 
         ///未提交文件直接更新信息
         if(null != multipartFile && !multipartFile.isEmpty()){
@@ -282,7 +290,6 @@ public class AdminBlogController {
                 blog.setBlogImage(dataBaseFileName);
                 ///判断是保存还是更新
                 if(flagUpdate!=null && flagUpdate.trim().equals("update")){
-                    blog.setId(Integer.parseInt(request.getParameter("id")));///进行更新，一定要带博客标识
                     blogServiceImpl.update(blog);
                     model.addAttribute("message", "--博客更新成功---");
                 }else{
@@ -293,7 +300,6 @@ public class AdminBlogController {
             }
         }else{
             if(flagUpdate!=null && flagUpdate.trim().equals("update")){
-                blog.setId(Integer.parseInt(request.getParameter("id")));///进行更新，一定要带博客标识
                 blogServiceImpl.update(blog);
                 model.addAttribute("message", "--博客更新成功---");
             }else{

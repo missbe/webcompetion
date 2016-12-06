@@ -85,7 +85,7 @@
                         <h1>
                             <c:if test="${!empty requestScope.blog}" >
                                 <c:set var="path" value="${'static/upload/blog/'} ${requestScope.blog.blogImage}" />
-                            <img src="<%=basePath%>${path}">
+                            <img src="<%=basePath%>${path}" width="85%" height="300px">
                             </c:if>
                         <p>
                             <c:if test="${!empty requestScope.blog}" >

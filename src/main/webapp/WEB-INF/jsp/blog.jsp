@@ -91,8 +91,15 @@
                     </div><!--end post-thumbnail-->
                     <!--文章-->
                     <c:if test="${!empty requestScope.blogList}">
-                        <c:forEach var="blog" items="${requestScope.blogList}">
-                            <div class="post-content row" >
+                        <c:forEach var="blog" items="${requestScope.blogList}" varStatus="num">
+                            <div class="post-content row"
+                                 <c:if test="${num.index!=0}">
+                                       style="margin-top: 75px"
+                                </c:if>
+                                 <c:if test="${num.index==0}">
+                                    style="margin-top: 30px"
+                                </c:if>
+                               >
 						      <span class="masonry-post-meta">
 							     ${blog.blogTime} / <a href="${basePath}blog/detail?id=${blog.id}">文章</a>
 						      </span>
@@ -100,11 +107,12 @@
                                 <div class="clear"></div>
                                 <!--正文-->
                                 <img src="<%=basePath%>${blog.blogImage}"  class="pull-left" style="margin-right:20px" width="150px" height="130px">
+                                <h3 align="left">${blog.blogTitle}</h3>
                                 <p >${blog.simpleContent}
                                 </p>
                             </div>
                             <!--更多-->
-                            <div style="position:absolute;buttom:-25px;right:-10px">
+                            <div style="position:absolute;buttom:-25px;right:-10px;">
                                 <a class="button red" href="${basePath}blog/detail?id=${blog.id}">Read More</a>
                             </div>
                         </c:forEach>
@@ -133,8 +141,8 @@
                         <img alt="140x140" src="<%=basePath%>static/upload/admin/logo.jpg" class="img-circle" />
                     </div>
                     <div>
-                        <strong>依然慢节奏</strong><br/>
-                        <small>欢迎来踩一踩....</small>
+                        <strong>---盐都科技官网博客---</strong><br/>
+                        <small>^__^欢迎来踩一踩[技术交流].....</small>
                     </div>
                 </div>
             </div>

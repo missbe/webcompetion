@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%
     String path = request.getContextPath();
@@ -60,16 +61,8 @@
 <script src="${basePath}static/company/js/jquery.min.js"></script>
 <script src="${basePath}static/company/js/jquery-ui.min.js"></script>
 <script type="${basePath}static/company/text/javascript" src="${basePath}static/company/js/modernizr.custom.26633.js"></script>
- 
+<script type="${basePath}static/company/text/javascript" src="${basePath}static/company/js/instafeed.js"></script>
 <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '1722882471316362');
-    fbq('track', "PageView");</script>
 <noscript><img height="1" width="1" style="display:none" src="${basePath}static/company/picture/dfbfbe56be7d46c9bbf453e8791a93a2.gif"/></noscript>
  <script>
 $(function(){
@@ -156,9 +149,8 @@ $(function(){
 <li data-menuanchor="Home" class="current"><a href="#Home">Home</a></li>
 <li data-menuanchor="Work"><a href="#Gallery">Gallery</a></li>
 <li data-menuanchor="Company"><a href="#Company">Company</a></li>
-<li><a href="#">SHOWREEL</a></li>
 <li data-menuanchor="Services"><a href="#Services">Service</a></li>
-<li data-menuanchor="Blog"><a href="<%=basePath%>/blog/list">Blog</a></li>
+<li data-menuanchor="Blog"><a href="${basePath}blog/list">Blog</a></li>
 <li data-menuanchor="Contact"><a href="#Contact">Contact</a></li>
 </ul>
 </nav>
@@ -171,9 +163,8 @@ $(function(){
 </div>
 <div id="fullpage">
 <div class="section oh" id="section0">
-  <video autoplay loop muted id="myVideo">
- <!-- ${basePath}static/company/578204362.mp4-->
-<source src="https://player.vimeo.com/external/177713132.hd.mp4?s=c44983217b6d4c37e28c2de81a94c79a185ea380&profile_id=119" type="video/mp4">
+     <video autoplay loop muted id="myVideo">
+<source src="http://ohgkgpp28.bkt.clouddn.com/578204362.mp4 " type="video/mp4">
 </video>
 <div class="element">
 <div class="element-middle">
@@ -196,7 +187,8 @@ $(function(){
 <c:if test="${!empty requestScope.imagelist}" >
 <c:forEach items="${requestScope.imagelist}" var="imagelist" 
     varStatus="num" begin="0" end="${requestScope.size}"  step="2" >
-<c:if test="${num.index+2<=requestScope.size}">
+<c:choose>
+<c:when test="${num.index+2<=requestScope.size}">
 <div class="height100 col-xs-6 itemWrappers">
 <div class="row height100">
 <div  class="col-xs-12 workItems oh 1 aside " 
@@ -209,7 +201,7 @@ $(function(){
                                                 <div class="element-middle">
                                                     <span class="icon" syle="background-image:url();"></span>
                                                     <h2>${requestScope.imagelist[num.index].title}</h2>
-                                                    <p>${requestScope.imagelist[num.index].title}</p>
+                                                    <p>${requestScope.imagelist[num.index].date}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -226,7 +218,7 @@ $(function(){
                                                 <div class="element-middle">
                                                     <span class="icon" syle="background-image:url();"></span>
                                                     <h2>${requestScope.imagelist[num.index+1].title}</h2>
-                                                    <p>${requestScope.imagelist[num.index+1].title}</p>
+                                                    <p>${requestScope.imagelist[num.index].date}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,8 +226,26 @@ $(function(){
                                 </div>  
                                </c:if>
                             </div></div>
-                            </c:if>
-                            
+                            </c:when>
+<c:otherwise>
+<div  class="col-xs-12 workItems oh 1 aside " 
+                              style='background-image:url( ${requestScope.imagelist[num.index].image.get(0)} );' > 
+                                     
+
+                                    <a href="${basePath}/webgallery?id=${num.index}"> 
+                                        <div class="workThumbnails">
+                                            <div class="element">
+                                                <div class="element-middle">
+                                                    <span class="icon" syle="background-image:url();"></span>
+                                                    <h2>${requestScope.imagelist[num.index].title}</h2>
+                                                    <p>${requestScope.imagelist[num.index].date}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>  
+</c:otherwise>
+                            </c:choose>
                             
                        </c:forEach>     
 </c:if>

@@ -17,7 +17,7 @@ public class Blog {
     @Column(name = "blog_id")
     private int id;
 
-    @Column(name = "blog_title",nullable = false,length=20)
+    @Column(name = "blog_title",nullable = false,length=60)
     private String blogTitle;
 
     @Column(name="blog_time",nullable = false)
@@ -26,21 +26,16 @@ public class Blog {
     @Column(name="admin_id",length=20)
     private int adminId;
 
-    @Column(name="blog_image",length=100)
+    @Column(name="blog_image",columnDefinition = "text")
     private String blogImage;
 
-
-//    @ManyToMany(targetEntity = Tags.class)
-//    @JoinTable(name = "blog_tags",
-//     joinColumns = @JoinColumn(name = "blog_id",referencedColumnName = "blog_id"),
-//     inverseJoinColumns = @JoinColumn(name = "tags_id",referencedColumnName = "tags_id"))
     @ElementCollection(targetClass = String.class)
     @CollectionTable(name = "blog_tags",joinColumns = @JoinColumn(name = "blog_id",nullable = true))
     @Column(name="blog_tags_id",length=50)
     @OrderColumn(name = "tags_id")
     private List<String> tags=new ArrayList<String>();
 
-      @Column(name="blog_category",length=50)
+      @Column(name="blog_category",length=80)
 //    @ManyToOne(targetEntity = Category.class)
 //    @JoinColumn(name = "blog_category_id",referencedColumnName = "blog_category_id")
     private String category;

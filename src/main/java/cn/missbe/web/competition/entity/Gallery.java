@@ -15,7 +15,7 @@ public class Gallery {
     @Column(name = "gallery_id")
     private int id;
 
-    @Column(name = "gallery_title",nullable = false,length=50)
+    @Column(name = "gallery_title",nullable = false,length=60)
     private String galleryTitle;
 
     @Column(name="gallery_time",nullable = false)
@@ -24,7 +24,7 @@ public class Gallery {
     @Column(name="admin_id",length=20)
     private int adminId;
 
-    @Column(name="gallery_image",length=200)
+    @Column(name="gallery_image",columnDefinition ="text")
     private String galleryImgage;
 
     @ElementCollection(targetClass = String.class)

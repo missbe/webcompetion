@@ -255,7 +255,7 @@
 
             <li class="sidebar-nav-link">
                 <a href="javascript:;" class="sidebar-nav-sub-title" id="hader_home">
-                    <i><img src="${basePath}static/company/images/company.png" style="width:1.5em;height:1.5em;"></i>&nbsp;&nbsp;&nbsp;&nbsp;首页管理
+                    <i><img src="${basePath}static/company/images/company.png" style="width:1.5em;height:1.5em;margin-right:2px;"></i>&nbsp;&nbsp;首页管理
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
                 <ul class="sidebar-nav sidebar-nav-sub">
